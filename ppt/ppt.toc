@@ -1,2 +1,0 @@
-\selectlanguage *{english}
-\selectlanguage *{english}

@@ -1,0 +1,269 @@
+\documentclass[11pt]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\usepackage{xeCJK}
+\usepackage{ctex}
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}%中文缩进两个汉字位
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{cite}
+\author{翁俊}
+\title{粒子场论小论文}
+\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+\institute{} 
+\date{} 
+%\subject{} 
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{三个问题}
+
+1.经过量子场论中的单粒子态，能否解决量子力学中的波粒二象性？
+\\
+$\ $\\
+2.波和粒子分别对应于量子场论中的什么内容？
+\\
+$\ $\\
+3.单粒子态来源于对称变换的生成元，波的概念来源于什么？
+\end{frame}
+\begin{frame}{量子场论中单粒子态的定义}
+\begin{flushleft}
+1.量子场论中的单粒子态是庞加莱群的不可约表示：
+庞加莱群：\begin{equation}
+T(\bar{\Lambda},\bar{a})T(\Lambda\,a)=T(\bar{\Lambda}\Lambda,\bar{\Lambda}a+\bar{a})
+\end{equation}
+\\
+庞加莱群的四个子群：
+\begin{itemize}
+\label{iterm:1}
+	\item{$det(\Lambda)=1$，$\Lambda^0_i\geq 1$形成的子群。}
+	\item{$det(\Lambda)=-1$，$\Lambda^0_i\geq 1$形成的子群，可以认为是第一种子群进行洛伦兹变换和空间反射变换的乘积。}
+	\item{$det(\Lambda)=-1$，$\Lambda^0_i\leq -1$形成的子群，可以认为是第一种子群进行洛伦兹变换和时间反演变换的乘积。}
+	\item{$det(\Lambda)=1$，$\Lambda^0_i\leq -1$形成的子群，可以认为是第一种子群进行洛伦兹变换和空间反射变换和时间反演变换的乘积。}
+\end{itemize}
+
+\end{flushleft}
+
+\end{frame}
+\begin{frame}{量子场论中单粒子态的定义}
+\begin{flushleft}
+2.庞加莱群用小群表示：
+庞加莱群的李代数：
+\begin{equation}
+\label{eq:7}
+i[J^{\mu\nu},J^{\rho\sigma}]=\eta^{\nu\rho}J^{\mu\sigma}-\eta^{\mu\rho}J^{\nu\sigma}-\eta^{\sigma\mu}J^{\rho\nu}+\eta^{\sigma\nu}J^{\rho\mu}
+\end{equation}
+\begin{equation}
+\label{eq:8}
+i[P^{\mu},J^{\rho\sigma}]=\eta^{\mu\rho}P^{\sigma}-\eta^{\mu\sigma}P^{\rho}
+\end{equation}
+\begin{equation}
+\label{eq:9}
+i[P^{\mu},P^{\rho}]=0
+\end{equation}
+大群用小群的表示：
+\begin{equation}
+\label{eq:15}
+U(\Lambda)\Phi_{p,\sigma}=\frac{N(p)}{N(\Lambda p)}\Sigma_{\sigma^{\prime}}D_{\sigma\sigma^{\prime}}(W(\Lambda,p))\Phi_{\Lambda p,\sigma^{\prime}}
+\end{equation}
+\end{flushleft}
+\end{frame}
+
+\begin{frame}{量子场论中单粒子态的定义}
+\begin{flushleft}
+3.庞加莱群确定$k^{\mu}$后的分类：\\
+\end{flushleft}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline 
+\multicolumn{3}{|c|}{\ } & $k^{\mu}$ & 小群 \\ 
+\hline 
+\multicolumn{3}{|c|}{$p^2=-M^2$,$p^0>0$} & (0,0,0,M) & SO(3)\\ 
+\hline 
+\multicolumn{3}{|c|}{$p^2=-M^2$,$p^0<0$} & (0,0,0,-M) & SO(3)\\ 
+\hline 
+\multicolumn{3}{|c|}{$p^2=0$,$p^0>0$} & (0,0,$\kappa$,$\kappa$) & ISO(2)\\ 
+\hline 
+\multicolumn{3}{|c|}{$p^2=0$,$p^0<0$} & (0,0,$\kappa$,$-\kappa$) & ISO(2)\\ 
+\hline 
+\multicolumn{3}{|c|}{$p^2=N^2>0$} & (0,0,N,0) & SO(2,1)\\ 
+\hline  
+\multicolumn{3}{|c|}{$p^{\mu}>0$} & (0,0,0,0) & SO(3,1)\\ 
+\hline 
+\end{tabular} 
+\end{center}
+\end{frame}
+
+\begin{frame}{量子场论中单粒子态的定义}
+\begin{flushleft}
+4.小群的物理意义：6种标准中，一共有三种标准具有实际的物理意义，分别代表了有质量粒子、零质量粒子和真空。有质量的粒子态对应的小群为$SO(3)$群，零质量的粒子态对应的是$ISO(2)$群。
+\begin{itemize}
+\item {对于有质量粒子，其小群 $SO(3)$的不可约幺正表示，可以用 $j(j=0,\frac{1}{2},1...)$ 来标记之，称$j$为自旋。这样，每种粒子有两个标记：质量和自旋。}
+\item {对于零质量粒子，其小群 $ISO(2)$有三个生成元，两个平移，一个旋转，由于物理上的观测原因，两个平移生成元的本征值都应该取 0，所以起作用的只有旋转生成元，其表示由一个参量刻画，我们称之为 螺旋度，只能取整数和半整数。}
+\item {单粒子态就被按照不同的质量和自旋（或螺旋度）被分类了，由此可见，每种单粒子态负载了庞加莱群的一个幺正表示，单粒子态也就由此定义了。}
+\end{itemize}
+\end{flushleft}
+\end{frame}
+\begin{frame}{量子场论中波函数的定义}
+\begin{flushleft}
+1.量子场论中的波函数是与路径积分相关的一个概念。\\
+考虑中性的标量粒子，即质量为$m$的场量$\Phi(x)$，其自由场的拉格朗日量为：
+\begin{equation}
+\label{eq:18}
+\mathcal{L}=\frac{1}{2}\partial^{\mu}\Phi\partial_{\mu}\Phi-\frac{1}{2}m^2 \Phi^2
+\end{equation}
+系统的作用量为：
+\begin{equation}
+\label{eq:19}
+S=\int d^4 x \mathcal{L}(\Phi(x),\partial_{\mu}\Phi(x))
+\end{equation}
+得到量子场中标量场$\Phi$的格林函数为：
+\begin{equation}
+\label{con:eq13}
+\begin{split}
+&\langle 0|T(\Phi(x_1)\Phi(x_2)...\Phi(x_n))|0\rangle\\&=\lim_{T\rightarrow\infty}\frac{\int d[\Phi]\Phi(x_1)\Phi(x_2)...\Phi(x_n)exp(i\int_{-iT}^{iT}dtL(t))}{\int d[\Phi]exp(i\int_{-iT}^{iT}dtL(t))}
+\end{split}
+\end{equation}
+\end{flushleft}
+\end{frame}
+
+\begin{frame}{量子场论中波函数的定义}
+\begin{flushleft}
+1.量子场论中的波函数是与路径积分相关的一个概念。\\
+考虑中性的标量粒子，即质量为$m$的场量$\Phi(x)$，其自由场的拉格朗日量为：
+\begin{equation}
+\label{eq:16}
+\mathcal{L}=\frac{1}{2}\partial^{\mu}\Phi\partial_{\mu}\Phi-\frac{1}{2}m^2 \Phi^2
+\end{equation}
+系统的作用量为：
+\begin{equation}
+\label{eq:17}
+S=\int d^4 x \mathcal{L}(\Phi(x),\partial_{\mu}\Phi(x))
+\end{equation}
+得到量子场中标量场$\Phi$的格林函数为：
+\begin{equation}
+\label{con:eq12}
+\begin{split}
+&\langle 0|T(\Phi(x_1)\Phi(x_2)...\Phi(x_n))|0\rangle\\&=\lim_{T\rightarrow\infty}\frac{\int d[\Phi]\Phi(x_1)\Phi(x_2)...\Phi(x_n)exp(i\int_{-iT}^{iT}dtL(t))}{\int d[\Phi]exp(i\int_{-iT}^{iT}dtL(t))}
+\end{split}
+\end{equation}
+\end{flushleft}
+\end{frame}
+\begin{frame}{量子场论中波函数的定义}
+\begin{flushleft}
+2.量子场论中的波函数：\\
+\begin{itemize}
+\item {量子场中的格林函数用泛函平均的形式表达，平均的权重是体系的经典作用量。}
+\item {量子场中的波函数的概念应当那个是描述场的函数。}
+\item {由于场本身依赖于时空点$x$，这就使得量子场中的波函数应该是关于$\Phi(x)$的一个泛函，其形式应该写为：$\Psi(\Phi(x))$。}
+\end{itemize}
+\end{flushleft}
+\end{frame}
+
+\begin{frame}{量子力学体系中的波粒子二象性}
+\begin{flushleft}
+波粒二象性是描述实物粒子具有波动粒子性的一个理论，指的是所有的粒子或量子不仅可以部分地以粒子的术语来描述，也可以部分地用波的术语来描述。\\
+$\ $\\
+
+1.由不确定性原理带来的波动性：\\
+在量子力学中，不对易的两个物理量不能同时取到确定的值，而对于坐标算符$\hat{x}$和动量算符$\hat{p}$有对易关系：
+\begin{equation}
+\label{eq:27}
+[\hat{x},\hat{p}]=i\hslash
+\end{equation}
+同时，坐标算符的不确定度为：
+\[
+\langle(\Delta \hat{x})^2\rangle=\langle \hat{x}^2\rangle-\langle \hat{x}\rangle^2
+\]
+动量算符的不确定度为：
+\[
+\langle(\Delta \hat{p})^2\rangle=\langle \hat{p}^2\rangle-\langle \hat{p}\rangle^2
+\]
+
+\end{flushleft}
+\end{frame}
+\begin{frame}{量子力学体系中的波粒子二象性}
+\begin{flushleft}
+1.由不确定性原理带来的波动性：\\
+
+化简计算得到：
+\begin{equation}
+\label{eq:31}
+\langle(\Delta \hat{x})^2(\Delta \hat{p})^2\rangle\geq\frac{\hslash^2}{4}
+\end{equation}
+能够取得等号的态$|\Psi\rangle$应该满足的条件为：
+\begin{itemize}
+\label{iterm:2}
+	\item{$\langle(\Delta \hat{x})^2(\Delta \hat{p})^2\rangle=|\langle(\Delta \hat{x}\Delta \hat{p})\rangle|^2 $}
+	\item{$ \langle\{\Delta \hat{x},\Delta \hat{p}\}\rangle=0$}
+\end{itemize}
+通过数学的求解，最后得到取到最小值的态应该为：
+\begin{equation}
+\label{eq:32}
+\langle x|\Psi\rangle=Aexp(-a\frac{(x-\langle x\rangle)^2}{2\hslash})exp(i\frac{\langle\hat{p}\rangle x}{\hslash})
+\end{equation}
+满足不确定原理的态为高斯波包。大量探测粒子时会出现象波一样的相干叠加的效应，表现出粒子的波动性。
+\end{flushleft}
+\end{frame}
+
+\begin{frame}{量子力学体系中的波粒子二象性}
+\begin{flushleft}
+2.实物粒子的波粒二象性：\\
+\begin{itemize}
+\label{iterm:4}
+	\item{实物粒子具有固有的内禀属性，例如自旋角动量、质量等属性。不同的粒子之间体现出不同的内禀性质，即就是实物粒子的粒子性。\\ $\ $}
+	
+	\item{对实物粒子的观测是不准确的，当观测大量粒子的时空演化时，会出现象波一样的相干叠加的效应，表现出粒子的波动性。\\ $\ $}
+	\item {实物粒子的运动满足薛定谔方程，可以有薛定谔方程求解演化的波函数，并以波函数的模方作为概率，在空间中随机分布，表现为概率波。\\ $\ $}
+\end{itemize}
+\end{flushleft}
+\end{frame}
+
+\begin{frame}{三个问题的个人看法}
+\begin{flushleft}
+1.经过量子场论中的单粒子态，能否解决量子力学中的波粒二象性？
+\\我认为不能：量子场论中的单粒子态定义为庞加莱群的不可约表示，包含了粒子的如质量和自旋等信息，但描述不了粒子的相干叠加，故而只能解释粒子的粒子性，而不能解释粒子的波动性。\\
+$\ $\\
+2.波和粒子分别对应于量子场论中的什么内容？
+\\我认为：粒子的概念对应于量子场论中的单粒子态的概念，波则对应于场量的变分的概念，即$\Psi(\Phi(x))$的概念。\\
+$\ $\\
+3.单粒子态来源于对称变换的生成元，波的概念来源于什么？
+\\我认为波的概念来源于对场量的路径积分，对应于变分的函数。
+
+\end{flushleft}
+\end{frame}
+
+\begin{frame}{一点感悟和吐槽}
+\begin{flushleft}
+1.量子场论很难！量子场论很难！量子场论很难！只用一学期的时间，是学不透的，需要继续花功夫学习。\\
+$\ $\\
+2.温伯格的书很难读懂，或许先读读其他教材，有一定的场论的认识了才能读懂温伯格的书，当然，读懂温伯格的书是场论学得怎么样的一个重要衡量标准。\\
+$\ $\\
+3.我量子场论学得比较差，仅仅局限在重复别人的推导上，还需要进一步的补充基础后再学习一遍场论。（这门课做的最好的一点就是有视频可以反复看，不过我觉得视频还可以配上字幕，这样观看起来会好很多，强烈建议！）\\
+$\ $\\
+4.感谢王老师的辛苦教学和各位助教的辛勤付出！（虽然学得不好，但是还是要表示感谢的）
+\end{flushleft}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+感谢聆听！
+
+\end{center}
+\end{frame}
+
+\end{document}

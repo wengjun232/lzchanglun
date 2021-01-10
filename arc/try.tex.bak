@@ -1,0 +1,300 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\usepackage{xeCJK}
+\usepackage{ctex}
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}%中文缩进两个汉字位
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{cite}
+\usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=black]{hyperref}
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{amsmath}
+ \usepackage{siunitx}
+\usepackage{geometry}
+
+\author{翁俊}
+\title{量子场论小论文}
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{量子场论中的单粒子态与“波函数”}
+\label{sec:1}
+\subsection{量子场论中的单粒子态}
+\label{sec:1.1}
+（齐次的）Lorentz 变换是保持时空间隔不变的线性变换。\cite{wenboge}\cite{peskin}其对应的变换矩阵$\Lambda_{\nu}^{\mu}$与时空坐标无关，且使得变换前后的 Minkowski 空间度规张量的各分量不变： 
+\begin{equation}
+\label{eq:1}
+\Lambda_{\rho}^{\mu}\Lambda_{\sigma}^{\nu} \eta_{\nu\mu}=\eta_{\rho\sigma}
+\end{equation}
+对式\eqref{eq:1}逆变的Minkowski 空间度规张量也成立, 写作：
+\begin{equation}
+\label{eq:2}
+\Lambda_{\rho}^{ \mu}\Lambda_{\sigma}^{\nu} \eta^{\nu\mu}=\eta^{\rho\sigma}
+\end{equation}
+这表明：$(det\Lambda)^2=1$。
+非齐次的 Lorentz 变换：
+\begin{equation}
+\label{eq:3}
+x^{\mu}\rightarrow x^{\prime \mu}=\Lambda_{\nu}^{\mu}x^{\nu}+a^{\mu}
+\end{equation}
+其中，$a^{\mu}$为任意的常量，$\Lambda_{\nu}^{\mu}$满足$\eta_{\mu\nu}\Lambda_{\rho}^{\mu}\Lambda_{\rho}^{\sigma}=\eta_{\rho\sigma}$。
+而$\eta$满足：
+\begin{equation}
+\label{eq:301}
+\eta_{11}=\eta_{22}=\eta_{33}=-\eta_{00}=+1
+\end{equation}
+
+由四动量的定义，有和$x\rightarrow \Lambda x+a$的动量变换为：$\frac{dx}{d\tau}=p\rightarrow\Lambda p$，不包含平移变换。
+考虑两个 Lorentz 变换的联合，如果$x\rightarrow x\prime=\Lambda x+a$、$x^{\prime}\rightarrow x^{\prime\prime}=\bar{\Lambda }x^{\prime}+\bar{a}$，则必然有：
+\begin{equation}
+\label{eq:4}
+x^{\prime\prime\mu}=\bar{\Lambda}_{\rho}^{\mu}x^{\prime\rho}+\bar{a}^{\mu}=\bar{\Lambda}_{\rho}^{\mu}(\Lambda_{\nu}^{\mu}x^{\nu}+a^{\rho})+\bar{a}^{\mu}
+\end{equation}
+即就是：
+\begin{equation}
+\label{eq:5}
+x^{\prime\prime\mu}=(\bar{\Lambda}_{\rho}^{\mu}\bar{\Lambda}^{\rho}_{\nu})x^{\nu}+(\bar{\Lambda}_{\rho}^{\mu}a^{\rho}+\bar{a}^{\mu}
+\end{equation}
+形象化的可以写成：
+\begin{equation}
+\label{eq:6}
+T(\bar{\Lambda},\bar{a})T(\Lambda\,a)=T(\bar{\Lambda}\Lambda,\bar{\Lambda}a+\bar{a})
+\end{equation}
+T表示的群即是非其次的洛伦兹群，又叫做庞加莱群。由于实际的物理意义，通常只用到其子群。
+
+同时，取出式\eqref{eq:1}\eqref{eq:2}的第00分量，可以得到：$(\Lambda^0_0)^2=1+\Lambda^0_i\Lambda^0_i$，结合到其行列式的平方为1，可以将庞加莱群分为4个部分：
+
+\begin{itemize}
+\label{iterm:1}
+	\item{$det(\Lambda)=1$，$\Lambda^0_i\geq 1$形成的子群。}
+	\item{$det(\Lambda)=-1$，$\Lambda^0_i\geq 1$形成的子群，可以认为是第一种子群进行洛伦兹变换和空间反射变换的乘积。}
+	\item{$det(\Lambda)=-1$，$\Lambda^0_i\leq -1$形成的子群，可以认为是第一种子群进行洛伦兹变换和时间反演变换的乘积。}
+	\item{$det(\Lambda)=1$，$\Lambda^0_i\leq -1$形成的子群，可以认为是第一种子群进行洛伦兹变换和空间反射变换和时间反演变换的乘积。}
+\end{itemize}
+
+将庞加莱群作用到四维时空上，其表示是一个四阶方阵，根据幺正性的要求可以求解出其李代数为：
+\begin{equation}
+\label{eq:7}
+i[J^{\mu\nu},J^{\rho\sigma}]=\eta^{\nu\rho}J^{\mu\sigma}-\eta^{\mu\rho}J^{\nu\sigma}-\eta^{\sigma\mu}J^{\rho\nu}+\eta^{\sigma\nu}J^{\rho\mu}
+\end{equation}
+\begin{equation}
+\label{eq:8}
+i[P^{\mu},J^{\rho\sigma}]=\eta^{\mu\rho}P^{\sigma}-\eta^{\mu\sigma}P^{\rho}
+\end{equation}
+\begin{equation}
+\label{eq:9}
+i[P^{\mu},P^{\rho}]=0
+\end{equation}
+其中，$P^{\mu}$表示的是时空平移变换的生成元；$J^{ij}$表示的是空间旋转变换的生成元。
+
+在希尔伯特空间上，用$\sigma$标记其他的未知自由度，用态矢表示动量的本征态有：
+\begin{equation}
+\label{eq:10}
+P^{\mu}\Phi_{p,\sigma}=p^{\mu}\Phi_{p,\sigma}
+\end{equation}
+此时，时空平移算符对动量本征态的作用仅仅改变其一个相位，则有洛伦兹变换：
+\begin{equation}
+\label{eq:11}
+U(\Lambda)\Phi_{p,\sigma}=\Sigma_{\sigma^{\prime}} C_{\sigma^{\prime}\sigma}(\Lambda,p) \Phi_{\Lambda p,\sigma^{\prime}}
+\end{equation}
+
+对于每一类的$p^2$，选取某一标准的动量$k^{\mu}$，则其他动量表示为：
+\begin{equation}
+\label{eq:12}
+p^{\mu}=L^{\mu}_{\nu}
+\end{equation}
+定义：$\Phi_{p,\sigma}=N(p)U(L(p))\Phi_{k,\sigma}$，则有：
+\begin{equation}
+\label{eq:13}
+U(\Lambda)\Phi_{p,\sigma}=N(p)U(W)\Phi_{k,\sigma}
+\end{equation}
+其中，$W=L^{-1}(\Lambda p)\Lambda L (p)$具有保持$k^{\mu}$的不变性质。洛伦兹群中保持$k^{\mu}$不变的变换构成了一个子群，成为小群。对于小群中的群元$W$，满足：
+\begin{equation}
+\label{eq:14}
+U(W)\Phi_{p,\sigma}=\Sigma_{\sigma^{\prime}}D_{\sigma\sigma^{\prime}}\Phi_{k,\sigma^{\prime}}
+\end{equation}
+即就是，$D_{\sigma\sigma^{\prime}}$构成了小群的一个表示，且$D$矩阵应该是幺正。
+用小群将大群表示出来：
+\begin{equation}
+\label{eq:15}
+U(\Lambda)\Phi_{p,\sigma}=\frac{N(p)}{N(\Lambda p)}\Sigma_{\sigma^{\prime}}D_{\sigma\sigma^{\prime}}(W(\Lambda,p))\Phi_{\Lambda p,\sigma^{\prime}}
+\end{equation}
+因此，不同的$p^2$的态之间不可以通过洛伦兹变化相联系，即就是不同的$p^2$对应于不同的表示。
+
+为了找到所有小群和所有小群的表示，先确定标准$k^{\mu}$，一共有6种标准，可在文献\cite{wenboge}中Table 2.1中找到。该6种标准中，一共有三种标准具有实际的物理意义，分别代表了有质量粒子、零质量粒子和真空。有质量的粒子态对应的小群为$SO(3)$群，零质量的粒子态对应的是$ISO(2)$群。
+
+对于有质量粒子，其小群 $SO(3)$的不可约幺正表示，可以用 $j(j=0,\frac{1}{2},1...)$ 来标记之，称$j$为自旋。这样，每种粒子有两个标记：质量和自旋。对于零质量粒子，其小群 $ISO(2)$有三个生成元，两个平移，一个旋转，由于物理上的观测原因，两个平移生成元的本征值都应该取 0，所以起作用的只有旋转生成元，其表示由一个参量刻画，我们称之为 螺旋度，只能取整数和半整数。单粒子态就被按照不同的质量和自旋（或螺旋度）被分类了，由此可见，每种单粒子态负载了庞加莱群的一个幺正表示，单粒子态也就由此定义了。同时，从单粒子态的定义可以看出，单粒子态只负载了粒子的基本信息，并不包含其演化信息，因此，并不能解释高等量子力学中的波粒二象性。
+
+\newpage
+
+\subsection{量子场论中的波函数}
+\label{sec:1.2}
+量子场论中的波函数是与路径积分相关的一个概念。考虑中性的标量粒子，即质量为$m$的场量$\Phi(x)$，其自由场的拉格朗日量为\cite{黄涛2015量子场论导论}：
+\begin{equation}
+\label{eq:16}
+\mathcal{L}=\frac{1}{2}\partial^{\mu}\Phi\partial_{\mu}\Phi-\frac{1}{2}m^2 \Phi^2
+\end{equation}
+系统的作用量为：
+\begin{equation}
+\label{eq:17}
+S=\int d^4 x \mathcal{L}(\Phi(x),\partial_{\mu}\Phi(x))
+\end{equation}
+引入外源方法对外源$J(x)$进行泛函微商：
+\begin{equation}
+\label{eq:18}
+\frac{\delta J(x)}{\delta J(y)}=\lim_{\epsilon \rightarrow 0}\frac{(J(x)+\epsilon \delta^4 (x-y))-J(x)}{\epsilon}=\delta^4(x-y)
+\end{equation}
+\begin{equation}
+\label{eq:19}
+\frac{\delta }{\delta J(y)}\int d^4 x J(x) \Phi(x)=\Phi(y)
+\end{equation}
+定义自由场的拉氏密度生成泛函：
+\begin{equation}
+\label{eq:20}
+Z(J)=\int [d\Phi]exp\{i\int d^4 x(\mathcal{L}+\Phi J)\}
+\end{equation}
+将实标量场按路径积分量子化，直接应用量子力学中的泛函积分形式推广到场论。将连续变量时间和空间分立化，在有限体积中分割出N个小立方格子，体积为$\epsilon$，固定体积V，取N的极限，再取回V的无穷极限，回到连续空间极限。场量$\Phi(x)$定义在这些小格子上，在初始时刻$t^i$，$\Phi ^i_j=\Phi(t^i,x_j)$。再进一步将时间$t$分成M个时间间隔，每一个间隔为$\delta$，形成分立的时间系列$\{t^m\}$。当$\delta\rightarrow  0$时，时间趋于连续极限。
+
+设物理系统$t_i$时刻的初态为$|\Phi_i,t_i\rangle$，$t_f$时刻的态为$|\Phi_f,t_f\rangle$。其跃迁几率为：$|\langle\Phi_f,t_f|\Phi_i,t_i\rangle|^2$。跃迁元表达为：
+\begin{equation}
+\label{eq:21}
+\langle\Phi_f,t_f|\Phi_i,t_i\rangle=\lim_{N\rightarrow\infty}\int \prod_{j=1}^N\{d\Phi_{j}^M...d\Phi_{j}^1\langle \Phi_{fj},t_f|\Phi_{j}^M,t_M\rangle\langle\Phi_{j}^M,t_M|\Phi_{ij}^{M-1},t_{M-1}\rangle...\langle\Phi_{j}^1,t_1|\Phi_{ij},t_{i}\rangle
+\end{equation}
+插入动量算符的本征态及动量表象中的哈密顿量密度，得到：
+\begin{equation}
+\label{eq:22}
+\langle\Phi_f,t_f|\Phi_i,t_i\rangle=\lim\int \prod_{j=1}^N(\prod_{m=1}^M d\Phi_j^m\prod_{m^{\prime}=0}^M\frac{\epsilon d\pi_j^{m^{\prime}}}{2\pi})exp[i\sum_{m=0}^M\delta\sum_{j=1}^N\epsilon(\pi_j^m\frac{\Phi_j^{m+1}-\Phi_j^m}{\delta}-\mathcal{H}_j^m)]
+\end{equation}
+可以写成泛函积分形式如下：
+\begin{equation}
+\label{eq:23}
+\langle\Phi_f,t_f|\Phi_i,t_i\rangle=\int [d\Phi][\frac{\epsilon d\pi}{2\pi}]exp\{i\int_{t_i}^{t_f}dt \int d^3x[\pi(x)\Phi(x)-\mathcal{H}(x)]\}
+\end{equation}
+
+其中：
+\[
+\int [d\Phi][\frac{\epsilon d\pi}{2\pi}]=\lim\prod_{m=1}^{M}d\Phi^m_j\prod_{m=0}^M\frac{\epsilon d\pi_{j}^m}{2\pi}
+\]
+同时：$\mathcal{H}(x)=\pi(x)\Phi(x)-\mathcal{L}=\frac{1}{2}\pi^2+\frac{1}{2}(\triangledown\Phi)^2+\frac{1}{2}m^2\Phi^2+V(\Phi)$，带入到式\eqref{eq:23}，得到：
+\begin{equation}
+\label{eq:24}
+\langle\Phi_f,t_f|\Phi_i,t_i\rangle=C\int [d\Phi]exp\{i\int_{t_i}^{t_f}dt \int d^3x\mathcal{L}(x)]\}=C\int [d\Phi]exp\{i\int_{t_i}^{t_f}dt L(t)了\}
+\end{equation}
+其中，$C$为高斯积分确定的一个常数。当时间$t_i\rightarrow\infty$且$t_f\rightarrow\infty$时，借助高斯积分表达n点格林函数为：
+\begin{equation}
+\label{eq:25}
+G_n(x_1,x_2...x_n)=\langle 0|T(\Phi(x_1)\Phi(x_2)...\Phi(x_n))|0\rangle=\frac{\int d[\Phi]\Phi(x_1)\Phi(x_2)...\Phi(x_n)exp(iS)}{\int d[\Phi]exp(iS)}
+\end{equation}
+在$T\rightarrow\infty$时，得到量子场中标量场$\Phi$的格林函数为：
+\begin{equation}
+\label{eq:26}
+\langle 0|T(\Phi(x_1)\Phi(x_2)...\Phi(x_n))|0\rangle=\lim_{T\rightarrow\infty}\frac{\int d[\Phi]\Phi(x_1)\Phi(x_2)...\Phi(x_n)exp(i\int_{-iT}^{iT}dtL(t))}{\int d[\Phi]exp(i\int_{-iT}^{iT}dtL(t))}
+\end{equation}
+这个形式与课上描述的波函数是一致的。
+
+由此，我们能描述出量子场中的“波函数”：量子场中的格林函数用泛函平均的形式表达，平均的权重是体系的经典作用量，从这一点上，可以认为，量子场中的波函数的概念应当那个是描述场的函数，由于场本身依赖于时空点$x$，这就使得量子场中的波函数应该是关于$\Phi(x)$的一个泛函，其形式应该写为：$\Psi(\Phi(x))$。
+
+\newpage
+\section{高等量子力学中的波粒二象性}
+\label{sec:2}
+\subsection{波粒二象性}
+\label{sec:2.1}
+波粒二象性是在Plank-Einstein的光量子论的基础上发展来的、描述实物粒子具有波动粒子性的一个理论，指的是所有的粒子或量子不仅可以部分地以粒子的术语来描述，也可以部分地用波的术语来描述。\cite{普谨言}
+
+在量子力学中，不对易的两个物理量不能同时取到确定的值，而对于坐标算符$\hat{x}$和动量算符$\hat{p}$有对易关系：
+\begin{equation}
+\label{eq:27}
+[\hat{x},\hat{p}]=i\hslash
+\end{equation}
+同时，坐标算符的不确定度为：
+\[
+\langle(\Delta \hat{x})^2\rangle=\langle \hat{x}^2\rangle-\langle \hat{x}\rangle^2
+\]
+动量算符的不确定度为：
+\[
+\langle(\Delta \hat{p})^2\rangle=\langle \hat{p}^2\rangle-\langle \hat{p}\rangle^2
+\]
+由Schwarz不等式，可以得到：
+\begin{equation}
+\label{eq:28}
+\langle(\Delta \hat{x})^2(\Delta \hat{p})^2\rangle\geq|\langle(\Delta \hat{x})(\Delta \hat{p})\rangle|^2
+\end{equation}
+同时右边可以化为：
+\begin{equation}
+\label{eq:29}
+\Delta \hat{x}\Delta\hat{p}=\frac{1}{2}[\Delta \hat{x},\Delta\hat{p}]+\frac{1}{2}\{\Delta \hat{x},\Delta\hat{p}\}
+\end{equation}
+考虑到坐标算符和动量算符是厄米算符，其平均值应该为实数，得到：
+\begin{equation}
+\label{eq:30}
+|\langle\Delta \hat{x}\Delta\hat{p}\rangle|^2=\frac{1}{4}|\langle\Delta \hat{x},\Delta\hat{p}]\rangle|^2+\frac{1}{4}|\langle\{\Delta \hat{x},\Delta\hat{p}\}\rangle|^2
+\end{equation}
+结合式\eqref{eq:28}\eqref{eq:29}\eqref{eq:30}，并将式\eqref{eq:27}带入得到：
+\begin{equation}
+\label{eq:31}
+\langle(\Delta \hat{x})^2(\Delta \hat{p})^2\rangle\geq\frac{\hslash^2}{4}
+\end{equation}
+能够取得等号的态$|\Psi\rangle$应该满足的条件为：
+\begin{itemize}
+\label{iterm:2}
+	\item{$\langle(\Delta \hat{x})^2(\Delta \hat{p})^2\rangle=|\langle(\Delta \hat{x}\Delta \hat{p})\rangle|^2 $}
+	\item{$ \langle\{\Delta \hat{x},\Delta \hat{p}\}\rangle=0$}
+\end{itemize}
+通过数学的求解，最后得到取到最小值的态应该为：
+\begin{equation}
+\label{eq:32}
+\langle x|\Psi\rangle=Aexp(-a\frac{(x-\langle x\rangle)^2}{2\hslash})exp(i\frac{\langle\hat{p}\rangle x}{\hslash})
+\end{equation}
+式\eqref{eq:32}表明，满足最小不确定度的态在坐标空间为Gauss波包，这意味着在探测粒子位置的时候，探测到的粒子的位置是不确定的，对粒子的位置进行大量的足够多的观测后，粒子出现的坐标空间是一个高斯波包描述的空间。在此基础上，本文理解的任何基本粒子本身就不存在绝对的静止状态，而是它可以在一个很小的空间中的任何位置，如果把它所在的位置按照不同时刻探测出来进行统计，那就是它这段时间的运行轨迹，这个轨迹通常符合波动的概率统计规律。
+
+当然，波粒二象性在实验上的体现为，当只发射一个电子通过双缝时，在屏上只能得到一个电子显现出来的点，当一个电子依次打的时候，每个电子打在屏幕上的位置都是随机的，但整体的轮廓符合波函数描述的统计规律，这就是波粒二象性。
+
+
+\subsection{薛定谔方程及波函数解}
+\label{sec:2.2}
+根据量子力学的基本假设可以知道，微观体系的运动状态由归一化的波函数描述。而量子力学中求解粒子问题常归结为解薛定谔方程或定态薛定谔方程。薛定谔方程反映了描述微观粒子的状态随时间变化的规律，它在量子力学中的地位相当于牛顿定律对于经典力学一样，是量子力学的基本假设之一。\cite{2006现代量子力学}
+
+设描述微观粒子状态的波函数为：$\Psi(\textbf{x},t)=\langle \textbf{x}|\alpha,t-0;t\rangle$，在薛定谔绘景中粒子处于势场$V(\textbf{x})$中，其哈密顿量可以写为：
+\[H=\frac{\textbf{p}^2}{2m}+V(\textbf{x})\]
+由薛定谔方程给出运动方程为：
+\begin{equation}
+\label{eq:333}
+i\hslash\frac{\partial}{\partial t}\Psi(\textbf{x},t)=H\Psi(\textbf{x},t)
+\end{equation}
+薛定谔方程描述了粒子或者说态随时间的演化。在给定初始条件和边界条件以及波函数所满足的单值、有限、连续的条件下，可解出波函数$\Psi(\textbf{x},t)$。
+\newpage
+\section{讨论}
+1.回顾单粒子态的定义，不能解释量子力学的波粒二象性。如章节\ref{sec:1.1}，量子场论的单粒子态是庞加莱群的不可约表示，在单粒子态中，定义了粒子的基本属性，这一部分在量子力学中对应了粒子的内禀属性，表征了粒子的粒子性；由于单粒子态并未给出粒子的运动规律，则无法描述粒子波动性质。量这一点在经过答辩思考后，我还是认为量子场论中的单粒子态是不能描述波动性的。但是由于和量子力学的考试时间冲突了，这一点我没有足够的时间继续理解和思考。
+
+
+2.由章节\ref{sec:1.2}可知，量子场论中的波函数描述的是场量$\Phi(x)$的函数，对应于量子力学中的波函数，描述粒子时空演化规律。量子场论中的单粒子态的概念对应于量子力学中的粒子概念，给出粒子的基本属性。本文认为，量子力学中的波是由波函数描述的概念，刻画的是粒子在空间中的传播或者说演化的规律，这一点量子场论中体现在路径积分上，此时的路径积分具有类似于量子力学中波函数的概念，描述了粒子的演化规律。波函数所展现的随机性，在路径积分可以得到体现，因为波函数的运动方程是量子解中的期望值，路径积分是泛函积分。在量子力学中，作用量是位移的泛函，而位移通常是时间的函数。当到了量子场论时，作用量也是泛函，但当中的函数是位移（或动量）及时间（或频率）的函数。
+
+
+3.粒子的概念来源于对称变换群的生成元，而波的概念对应于变分的函数，即就是章节\ref{sec:1.2}中所描述的$\Psi(\Phi(x))$。
+
+4.一点心得体会：量子场论是一门需要很多功夫的学科，需要扎实的数学功底以及仔细耐心的推导。本文的推导过程与其说是参考，不如说是重复其他文章书籍中的内容，很多地方都是一知半解，懂的了解到的甚至于是皮毛不到。想要学好量子场论，或许还需要更长的时间去慢慢琢磨。虽然课程已经结束，但是还有很多很多的地方需要学习，还需要继续花功夫。（这门课做的最好的一点就是有视频可以反复看，不过我觉得视频还可以配上字幕，这样观看起来会好很多，强烈建议！对了，答辩那天说的，我可以帮助给视频配字幕，当然，这里面有私心，配字幕势必要理解视频中的内容，我也是出于希望更加深入的理解才萌发的想法。）
+
+5.一点吐槽：温伯格的书讲的太难理解，或许想要学好这门课，还需要看其他的量子场论教材，不过很相信的一点，读懂温伯格的书，是基本了解掌握量子场论知识体系的一个重要衡量。
+\newpage
+\bibliographystyle{unsrt}
+\bibliography{ref.bib}
+\end{document}
+
+
